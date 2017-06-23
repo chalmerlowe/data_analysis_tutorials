@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<!-- saved from url=(0036)https://www.debuggex.com/#cheatsheet -->
+<html lang="en" ng-app="RegexApp" class="ng-scope"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide{display:none !important;}ng\:form{display:block;}</style>
+				<link type="text/css" href="./Debuggex_files/main.css" rel="stylesheet">
+ 
+				<script type="text/javascript" async="" src="./Debuggex_files/ga.js"></script><script type="text/javascript" src="./Debuggex_files/main.js"></script><style id="ace_editor">.ace_editor {position: absolute;overflow: hidden;font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;font-size: 12px;}.ace_scroller {position: absolute;overflow: hidden;}.ace_content {position: absolute;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;cursor: text;}.ace_gutter {position: absolute;overflow : hidden;height: 100%;width: auto;cursor: default;z-index: 4;}.ace_gutter-active-line {position: absolute;left: 0;right: 0;}.ace_scroller.ace_scroll-left {box-shadow: 17px 0 16px -16px rgba(0, 0, 0, 0.4) inset;}.ace_gutter-cell {padding-left: 19px;padding-right: 6px;background-repeat: no-repeat;}.ace_gutter-cell.ace_error {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QUM2OEZDQTQ4RTU0MTFFMUEzM0VFRTM2RUY1M0RBMjYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QUM2OEZDQTU4RTU0MTFFMUEzM0VFRTM2RUY1M0RBMjYiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpBQzY4RkNBMjhFNTQxMUUxQTMzRUVFMzZFRjUzREEyNiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpBQzY4RkNBMzhFNTQxMUUxQTMzRUVFMzZFRjUzREEyNiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PkgXxbAAAAJbSURBVHjapFNNaBNBFH4zs5vdZLP5sQmNpT82QY209heh1ioWisaDRcSKF0WKJ0GQnrzrxasHsR6EnlrwD0TagxJabaVEpFYxLWlLSS822tr87m66ccfd2GKyVhA6MMybgfe97/vmPUQphd0sZjto9XIn9OOsvlu2nkqRzVU+6vvlzPf8W6bk8dxQ0NPbxAALgCgg2JkaQuhzQau/El0zbmUA7U0Es8v2CiYmKQJHGO1QICCLoqilMhkmurDAyapKgqItezi/USRdJqEYY4D5jCy03ht2yMkkvL91jTTX10qzyyu2hruPRN7jgbH+EOsXcMLgYiThEgAMhABW85oqy1DXdRIdvP1AHJ2acQXvDIrVHcdQNrEKNYSVMSZGMjEzIIAwDXIo+6G/FxcGnzkC3T2oMhLjre49sBB+RRcHLqdafK6sYdE/GGBwU1VpFNj0aN8pJbe+BkZyevUrvLl6Xmm0W9IuTc0DxrDNAJd5oEvI/KRsNC3bQyNjPO9yQ1YHcfj2QvfQc/5TUhJTBc2iM0U7AWDQtc1nJHvD/cfO2s7jaGkiTEfa/Ep8coLu7zmNmh8+dc5lZDuUeFAGUNA/OY6JVaypQ0vjr7XYjUvJM37vt+j1vuTK5DgVfVUoTjVe+y3/LxMxY2GgU+CSLy4cpfsYorRXuXIOi0Vt40h67uZFTdIo6nLaZcwUJWAzwNS0tBnqqKzQDnjdG/iPyZxo46HaKUpbvYkj8qYRTZsBhge+JHhZyh0x9b95JqjVJkT084kZIPwu/mPWqPgfQ5jXh2+92Ay7HedfAgwA6KDWafb4w3cAAAAASUVORK5CYII=");background-repeat: no-repeat;background-position: 2px center;}.ace_gutter-cell.ace_warning {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QUM2OEZDQTg4RTU0MTFFMUEzM0VFRTM2RUY1M0RBMjYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QUM2OEZDQTk4RTU0MTFFMUEzM0VFRTM2RUY1M0RBMjYiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpBQzY4RkNBNjhFNTQxMUUxQTMzRUVFMzZFRjUzREEyNiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpBQzY4RkNBNzhFNTQxMUUxQTMzRUVFMzZFRjUzREEyNiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pgd7PfIAAAGmSURBVHjaYvr//z8DJZiJgUIANoCRkREb9gLiSVAaQx4OQM7AAkwd7XU2/v++/rOttdYGEB9dASEvOMydGKfH8Gv/p4XTkvRBfLxeQAP+1cUhXopyvzhP7P/IoSj7g7Mw09cNKO6J1QQ0L4gICPIv/veg/8W+JdFvQNLHVsW9/nmn9zk7B+cCkDwhL7gt6knSZnx9/LuCEOcvkIAMP+cvto9nfqyZmmUAksfnBUtbM60gX/3/kgyv3/xSFOL5DZT+L8vP+Yfh5cvfPvp/xUHyQHXGyAYwgpwBjZYFT3Y1OEl/OfCH4ffv3wzc4iwMvNIsDJ+f/mH4+vIPAxsb631WW0Yln6ZpQLXdMK/DXGDflh+sIv37EivD5x//Gb7+YWT4y86sl7BCCkSD+Z++/1dkvsFRl+HnD1Rvje4F8whjMXmGj58YGf5zsDMwcnAwfPvKcml62DsQDeaDxN+/Y0qwlpEHqrdB94IRNIDUgfgfKJChGK4OikEW3gTiXUB950ASLFAF54AC94A0G9QAfOnmF9DCDzABFqS08IHYDIScdijOjQABBgC+/9awBH96jwAAAABJRU5ErkJggg==");background-position: 2px center;}.ace_gutter-cell.ace_info {background-image: url("data:image/gif;base64,R0lGODlhEAAQAMQAAAAAAEFBQVJSUl5eXmRkZGtra39/f4WFhYmJiZGRkaampry8vMPDw8zMzNXV1dzc3OTk5Orq6vDw8P///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABQALAAAAAAQABAAAAUuICWOZGmeaBml5XGwFCQSBGyXRSAwtqQIiRuiwIM5BoYVbEFIyGCQoeJGrVptIQA7");background-position: 2px center;}.ace_dark .ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpGRTk5MTVGREIxNDkxMUUxOTc5Q0FFREQyMTNGMjBFQyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpGRTk5MTVGRUIxNDkxMUUxOTc5Q0FFREQyMTNGMjBFQyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZFOTkxNUZCQjE0OTExRTE5NzlDQUVERDIxM0YyMEVDIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkZFOTkxNUZDQjE0OTExRTE5NzlDQUVERDIxM0YyMEVDIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+SIDkjAAAAJ1JREFUeNpi/P//PwMlgImBQkB7A6qrq/+DMC55FkIGKCoq4pVnpFkgTp069f/+/fv/r1u37r+tre1/kg0A+ptn9uzZYLaRkRHpLvjw4cNXWVlZhufPnzOcO3eOdAO0tbVPAjHDmzdvGA4fPsxIsgGSkpJmv379Ynj37h2DjIyMCMkG3LhxQ/T27dsMampqDHZ2dq/pH41DxwCAAAMAFdc68dUsFZgAAAAASUVORK5CYII=");}.ace_scrollbar {position: absolute;overflow-x: hidden;overflow-y: scroll;right: 0;}.ace_scrollbar-inner {position: absolute;width: 1px;left: 0;}.ace_print-margin {position: absolute;height: 100%;}.ace_text-input {position: absolute;z-index: 0;width: 0.5em;height: 1em;opacity: 0;background: transparent;-moz-appearance: none;appearance: none;border: none;resize: none;outline: none;overflow: hidden;}.ace_text-input.ace_composition {background: #fff;color: #000;z-index: 1000;opacity: 1;border: solid lightgray 1px;margin: -1px}.ace_layer {z-index: 1;position: absolute;overflow: hidden;white-space: nowrap;height: 100%;width: 100%;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;/* setting pointer-events: auto; on node under the mouse, which changesduring scroll, will break mouse wheel scrolling in Safari */pointer-events: none;}.ace_gutter-layer {position: relative;width: auto;text-align: right;pointer-events: auto;}.ace_text-layer {color: black;font: inherit !important;}.ace_cjk {display: inline-block;text-align: center;}.ace_cursor-layer {z-index: 4;}.ace_cursor {z-index: 4;position: absolute;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}.ace_hidden-cursors .ace_cursor {opacity: 0.2;}.ace_smooth-blinking .ace_cursor {-moz-transition: opacity 0.18s;-webkit-transition: opacity 0.18s;-o-transition: opacity 0.18s;-ms-transition: opacity 0.18s;transition: opacity 0.18s;}.ace_cursor[style*="opacity: 0"]{-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";}.ace_editor.ace_multiselect .ace_cursor {border-left-width: 1px;}.ace_line {white-space: nowrap;}.ace_marker-layer .ace_step {position: absolute;z-index: 3;}.ace_marker-layer .ace_selection {position: absolute;z-index: 5;}.ace_marker-layer .ace_bracket {position: absolute;z-index: 6;}.ace_marker-layer .ace_active-line {position: absolute;z-index: 2;}.ace_marker-layer .ace_selected-word {position: absolute;z-index: 4;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}.ace_line .ace_fold {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;display: inline-block;height: 11px;margin-top: -2px;vertical-align: middle;background-image:url("data:image/png,%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%11%00%00%00%09%08%06%00%00%00%D4%E8%C7%0C%00%00%03%1EiCCPICC%20Profile%00%00x%01%85T%DFk%D3P%14%FE%DAe%9D%B0%E1%8B%3Ag%11%09%3Eh%91ndStC%9C%B6kW%BA%CDZ%EA6%B7!H%9B%A6m%5C%9A%C6%24%ED~%B0%07%D9%8Bo%3A%C5w%F1%07%3E%F9%07%0C%D9%83o%7B%92%0D%C6%14a%F8%AC%88%22L%F6%22%B3%9E%9B4M'S%03%B9%F7%BB%DF%F9%EE9'%E7%E4%5E%A0%F9qZ%D3%14%2F%0F%14USO%C5%C2%FC%C4%E4%14%DF%F2%01%5E%1CC%2B%FChM%8B%86%16J%26G%40%0F%D3%B2y%EF%B3%F3%0E%1E%C6lt%EEo%DF%AB%FEc%D5%9A%95%0C%11%F0%1C%20%BE%945%C4%22%E1Y%A0i%5C%D4t%13%E0%D6%89%EF%9D15%C2%CDLsX%A7%04%09%1Fg8oc%81%E1%8C%8D%23%96f45%40%9A%09%C2%07%C5B%3AK%B8%408%98i%E0%F3%0D%D8%CE%81%14%E4'%26%A9%92.%8B%3C%ABER%2F%E5dE%B2%0C%F6%F0%1Fs%83%F2_%B0%A8%94%E9%9B%AD%E7%10%8Dm%9A%19N%D1%7C%8A%DE%1F9%7Dp%8C%E6%00%D5%C1%3F_%18%BDA%B8%9DpX6%E3%A35~B%CD%24%AE%11%26%BD%E7%EEti%98%EDe%9A%97Y)%12%25%1C%24%BCbT%AE3li%E6%0B%03%89%9A%E6%D3%ED%F4P%92%B0%9F4%BF43Y%F3%E3%EDP%95%04%EB1%C5%F5%F6KF%F4%BA%BD%D7%DB%91%93%07%E35%3E%A7)%D6%7F%40%FE%BD%F7%F5r%8A%E5y%92%F0%EB%B4%1E%8D%D5%F4%5B%92%3AV%DB%DB%E4%CD%A6%23%C3%C4wQ%3F%03HB%82%8E%1Cd(%E0%91B%0Ca%9Ac%C4%AA%F8L%16%19%22J%A4%D2itTy%B28%D6%3B(%93%96%ED%1CGx%C9_%0E%B8%5E%16%F5%5B%B2%B8%F6%E0%FB%9E%DD%25%D7%8E%BC%15%85%C5%B7%A3%D8Q%ED%B5%81%E9%BA%B2%13%9A%1B%7Fua%A5%A3n%E17%B9%E5%9B%1Bm%AB%0B%08Q%FE%8A%E5%B1H%5Ee%CAO%82Q%D7u6%E6%90S%97%FCu%0B%CF2%94%EE%25v%12X%0C%BA%AC%F0%5E%F8*l%0AO%85%17%C2%97%BF%D4%C8%CE%DE%AD%11%CB%80q%2C%3E%AB%9ES%CD%C6%EC%25%D2L%D2%EBd%B8%BF%8A%F5B%C6%18%F9%901CZ%9D%BE%24M%9C%8A9%F2%DAP%0B'%06w%82%EB%E6%E2%5C%2F%D7%07%9E%BB%CC%5D%E1%FA%B9%08%AD.r%23%8E%C2%17%F5E%7C!%F0%BE3%BE%3E_%B7o%88a%A7%DB%BE%D3d%EB%A31Z%EB%BB%D3%91%BA%A2%B1z%94%8F%DB'%F6%3D%8E%AA%13%19%B2%B1%BE%B1~V%08%2B%B4%A2cjJ%B3tO%00%03%25mN%97%F3%05%93%EF%11%84%0B%7C%88%AE-%89%8F%ABbW%90O%2B%0Ao%99%0C%5E%97%0CI%AFH%D9.%B0%3B%8F%ED%03%B6S%D6%5D%E6i_s9%F3*p%E9%1B%FD%C3%EB.7U%06%5E%19%C0%D1s.%17%A03u%E4%09%B0%7C%5E%2C%EB%15%DB%1F%3C%9E%B7%80%91%3B%DBc%AD%3Dma%BA%8B%3EV%AB%DBt.%5B%1E%01%BB%0F%AB%D5%9F%CF%AA%D5%DD%E7%E4%7F%0Bx%A3%FC%06%A9%23%0A%D6%C2%A1_2%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%9A%9C%18%00%00%00%B5IDAT(%15%A5%91%3D%0E%02!%10%85ac%E1%05%D6%CE%D6%C6%CE%D2%E8%ED%CD%DE%C0%C6%D6N.%E0V%F8%3D%9Ca%891XH%C2%BE%D9y%3F%90!%E6%9C%C3%BFk%E5%011%C6-%F5%C8N%04%DF%BD%FF%89%DFt%83DN%60%3E%F3%AB%A0%DE%1A%5Dg%BE%10Q%97%1B%40%9C%A8o%10%8F%5E%828%B4%1B%60%87%F6%02%26%85%1Ch%1E%C1%2B%5Bk%FF%86%EE%B7j%09%9A%DA%9B%ACe%A3%F9%EC%DA!9%B4%D5%A6%81%86%86%98%CC%3C%5B%40%FA%81%B3%E9%CB%23%94%C16Azo%05%D4%E1%C1%95a%3B%8A'%A0%E8%CC%17%22%85%1D%BA%00%A2%FA%DC%0A%94%D1%D1%8D%8B%3A%84%17B%C7%60%1A%25Z%FC%8D%00%00%00%00IEND%AEB%60%82"),url("data:image/png,%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%05%00%00%007%08%06%00%00%00%C4%DD%80C%00%00%03%1EiCCPICC%20Profile%00%00x%01%85T%DFk%D3P%14%FE%DAe%9D%B0%E1%8B%3Ag%11%09%3Eh%91ndStC%9C%B6kW%BA%CDZ%EA6%B7!H%9B%A6m%5C%9A%C6%24%ED~%B0%07%D9%8Bo%3A%C5w%F1%07%3E%F9%07%0C%D9%83o%7B%92%0D%C6%14a%F8%AC%88%22L%F6%22%B3%9E%9B4M'S%03%B9%F7%BB%DF%F9%EE9'%E7%E4%5E%A0%F9qZ%D3%14%2F%0F%14USO%C5%C2%FC%C4%E4%14%DF%F2%01%5E%1CC%2B%FChM%8B%86%16J%26G%40%0F%D3%B2y%EF%B3%F3%0E%1E%C6lt%EEo%DF%AB%FEc%D5%9A%95%0C%11%F0%1C%20%BE%945%C4%22%E1Y%A0i%5C%D4t%13%E0%D6%89%EF%9D15%C2%CDLsX%A7%04%09%1Fg8oc%81%E1%8C%8D%23%96f45%40%9A%09%C2%07%C5B%3AK%B8%408%98i%E0%F3%0D%D8%CE%81%14%E4'%26%A9%92.%8B%3C%ABER%2F%E5dE%B2%0C%F6%F0%1Fs%83%F2_%B0%A8%94%E9%9B%AD%E7%10%8Dm%9A%19N%D1%7C%8A%DE%1F9%7Dp%8C%E6%00%D5%C1%3F_%18%BDA%B8%9DpX6%E3%A35~B%CD%24%AE%11%26%BD%E7%EEti%98%EDe%9A%97Y)%12%25%1C%24%BCbT%AE3li%E6%0B%03%89%9A%E6%D3%ED%F4P%92%B0%9F4%BF43Y%F3%E3%EDP%95%04%EB1%C5%F5%F6KF%F4%BA%BD%D7%DB%91%93%07%E35%3E%A7)%D6%7F%40%FE%BD%F7%F5r%8A%E5y%92%F0%EB%B4%1E%8D%D5%F4%5B%92%3AV%DB%DB%E4%CD%A6%23%C3%C4wQ%3F%03HB%82%8E%1Cd(%E0%91B%0Ca%9Ac%C4%AA%F8L%16%19%22J%A4%D2itTy%B28%D6%3B(%93%96%ED%1CGx%C9_%0E%B8%5E%16%F5%5B%B2%B8%F6%E0%FB%9E%DD%25%D7%8E%BC%15%85%C5%B7%A3%D8Q%ED%B5%81%E9%BA%B2%13%9A%1B%7Fua%A5%A3n%E17%B9%E5%9B%1Bm%AB%0B%08Q%FE%8A%E5%B1H%5Ee%CAO%82Q%D7u6%E6%90S%97%FCu%0B%CF2%94%EE%25v%12X%0C%BA%AC%F0%5E%F8*l%0AO%85%17%C2%97%BF%D4%C8%CE%DE%AD%11%CB%80q%2C%3E%AB%9ES%CD%C6%EC%25%D2L%D2%EBd%B8%BF%8A%F5B%C6%18%F9%901CZ%9D%BE%24M%9C%8A9%F2%DAP%0B'%06w%82%EB%E6%E2%5C%2F%D7%07%9E%BB%CC%5D%E1%FA%B9%08%AD.r%23%8E%C2%17%F5E%7C!%F0%BE3%BE%3E_%B7o%88a%A7%DB%BE%D3d%EB%A31Z%EB%BB%D3%91%BA%A2%B1z%94%8F%DB'%F6%3D%8E%AA%13%19%B2%B1%BE%B1~V%08%2B%B4%A2cjJ%B3tO%00%03%25mN%97%F3%05%93%EF%11%84%0B%7C%88%AE-%89%8F%ABbW%90O%2B%0Ao%99%0C%5E%97%0CI%AFH%D9.%B0%3B%8F%ED%03%B6S%D6%5D%E6i_s9%F3*p%E9%1B%FD%C3%EB.7U%06%5E%19%C0%D1s.%17%A03u%E4%09%B0%7C%5E%2C%EB%15%DB%1F%3C%9E%B7%80%91%3B%DBc%AD%3Dma%BA%8B%3EV%AB%DBt.%5B%1E%01%BB%0F%AB%D5%9F%CF%AA%D5%DD%E7%E4%7F%0Bx%A3%FC%06%A9%23%0A%D6%C2%A1_2%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%9A%9C%18%00%00%00%3AIDAT8%11c%FC%FF%FF%7F%18%03%1A%60%01%F2%3F%A0%891%80%04%FF%11-%F8%17%9BJ%E2%05%B1ZD%81v%26t%E7%80%F8%A3%82h%A12%1A%20%A3%01%02%0F%01%BA%25%06%00%19%C0%0D%AEF%D5%3ES%00%00%00%00IEND%AEB%60%82");background-repeat: no-repeat, repeat-x;background-position: center center, top left;color: transparent;border: 1px solid black;-moz-border-radius: 2px;-webkit-border-radius: 2px;border-radius: 2px;cursor: pointer;pointer-events: auto;}.ace_dark .ace_fold {}.ace_fold:hover{background-image:url("data:image/png,%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%11%00%00%00%09%08%06%00%00%00%D4%E8%C7%0C%00%00%03%1EiCCPICC%20Profile%00%00x%01%85T%DFk%D3P%14%FE%DAe%9D%B0%E1%8B%3Ag%11%09%3Eh%91ndStC%9C%B6kW%BA%CDZ%EA6%B7!H%9B%A6m%5C%9A%C6%24%ED~%B0%07%D9%8Bo%3A%C5w%F1%07%3E%F9%07%0C%D9%83o%7B%92%0D%C6%14a%F8%AC%88%22L%F6%22%B3%9E%9B4M'S%03%B9%F7%BB%DF%F9%EE9'%E7%E4%5E%A0%F9qZ%D3%14%2F%0F%14USO%C5%C2%FC%C4%E4%14%DF%F2%01%5E%1CC%2B%FChM%8B%86%16J%26G%40%0F%D3%B2y%EF%B3%F3%0E%1E%C6lt%EEo%DF%AB%FEc%D5%9A%95%0C%11%F0%1C%20%BE%945%C4%22%E1Y%A0i%5C%D4t%13%E0%D6%89%EF%9D15%C2%CDLsX%A7%04%09%1Fg8oc%81%E1%8C%8D%23%96f45%40%9A%09%C2%07%C5B%3AK%B8%408%98i%E0%F3%0D%D8%CE%81%14%E4'%26%A9%92.%8B%3C%ABER%2F%E5dE%B2%0C%F6%F0%1Fs%83%F2_%B0%A8%94%E9%9B%AD%E7%10%8Dm%9A%19N%D1%7C%8A%DE%1F9%7Dp%8C%E6%00%D5%C1%3F_%18%BDA%B8%9DpX6%E3%A35~B%CD%24%AE%11%26%BD%E7%EEti%98%EDe%9A%97Y)%12%25%1C%24%BCbT%AE3li%E6%0B%03%89%9A%E6%D3%ED%F4P%92%B0%9F4%BF43Y%F3%E3%EDP%95%04%EB1%C5%F5%F6KF%F4%BA%BD%D7%DB%91%93%07%E35%3E%A7)%D6%7F%40%FE%BD%F7%F5r%8A%E5y%92%F0%EB%B4%1E%8D%D5%F4%5B%92%3AV%DB%DB%E4%CD%A6%23%C3%C4wQ%3F%03HB%82%8E%1Cd(%E0%91B%0Ca%9Ac%C4%AA%F8L%16%19%22J%A4%D2itTy%B28%D6%3B(%93%96%ED%1CGx%C9_%0E%B8%5E%16%F5%5B%B2%B8%F6%E0%FB%9E%DD%25%D7%8E%BC%15%85%C5%B7%A3%D8Q%ED%B5%81%E9%BA%B2%13%9A%1B%7Fua%A5%A3n%E17%B9%E5%9B%1Bm%AB%0B%08Q%FE%8A%E5%B1H%5Ee%CAO%82Q%D7u6%E6%90S%97%FCu%0B%CF2%94%EE%25v%12X%0C%BA%AC%F0%5E%F8*l%0AO%85%17%C2%97%BF%D4%C8%CE%DE%AD%11%CB%80q%2C%3E%AB%9ES%CD%C6%EC%25%D2L%D2%EBd%B8%BF%8A%F5B%C6%18%F9%901CZ%9D%BE%24M%9C%8A9%F2%DAP%0B'%06w%82%EB%E6%E2%5C%2F%D7%07%9E%BB%CC%5D%E1%FA%B9%08%AD.r%23%8E%C2%17%F5E%7C!%F0%BE3%BE%3E_%B7o%88a%A7%DB%BE%D3d%EB%A31Z%EB%BB%D3%91%BA%A2%B1z%94%8F%DB'%F6%3D%8E%AA%13%19%B2%B1%BE%B1~V%08%2B%B4%A2cjJ%B3tO%00%03%25mN%97%F3%05%93%EF%11%84%0B%7C%88%AE-%89%8F%ABbW%90O%2B%0Ao%99%0C%5E%97%0CI%AFH%D9.%B0%3B%8F%ED%03%B6S%D6%5D%E6i_s9%F3*p%E9%1B%FD%C3%EB.7U%06%5E%19%C0%D1s.%17%A03u%E4%09%B0%7C%5E%2C%EB%15%DB%1F%3C%9E%B7%80%91%3B%DBc%AD%3Dma%BA%8B%3EV%AB%DBt.%5B%1E%01%BB%0F%AB%D5%9F%CF%AA%D5%DD%E7%E4%7F%0Bx%A3%FC%06%A9%23%0A%D6%C2%A1_2%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%9A%9C%18%00%00%00%B5IDAT(%15%A5%91%3D%0E%02!%10%85ac%E1%05%D6%CE%D6%C6%CE%D2%E8%ED%CD%DE%C0%C6%D6N.%E0V%F8%3D%9Ca%891XH%C2%BE%D9y%3F%90!%E6%9C%C3%BFk%E5%011%C6-%F5%C8N%04%DF%BD%FF%89%DFt%83DN%60%3E%F3%AB%A0%DE%1A%5Dg%BE%10Q%97%1B%40%9C%A8o%10%8F%5E%828%B4%1B%60%87%F6%02%26%85%1Ch%1E%C1%2B%5Bk%FF%86%EE%B7j%09%9A%DA%9B%ACe%A3%F9%EC%DA!9%B4%D5%A6%81%86%86%98%CC%3C%5B%40%FA%81%B3%E9%CB%23%94%C16Azo%05%D4%E1%C1%95a%3B%8A'%A0%E8%CC%17%22%85%1D%BA%00%A2%FA%DC%0A%94%D1%D1%8D%8B%3A%84%17B%C7%60%1A%25Z%FC%8D%00%00%00%00IEND%AEB%60%82"),url("data:image/png,%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%05%00%00%007%08%06%00%00%00%C4%DD%80C%00%00%03%1EiCCPICC%20Profile%00%00x%01%85T%DFk%D3P%14%FE%DAe%9D%B0%E1%8B%3Ag%11%09%3Eh%91ndStC%9C%B6kW%BA%CDZ%EA6%B7!H%9B%A6m%5C%9A%C6%24%ED~%B0%07%D9%8Bo%3A%C5w%F1%07%3E%F9%07%0C%D9%83o%7B%92%0D%C6%14a%F8%AC%88%22L%F6%22%B3%9E%9B4M'S%03%B9%F7%BB%DF%F9%EE9'%E7%E4%5E%A0%F9qZ%D3%14%2F%0F%14USO%C5%C2%FC%C4%E4%14%DF%F2%01%5E%1CC%2B%FChM%8B%86%16J%26G%40%0F%D3%B2y%EF%B3%F3%0E%1E%C6lt%EEo%DF%AB%FEc%D5%9A%95%0C%11%F0%1C%20%BE%945%C4%22%E1Y%A0i%5C%D4t%13%E0%D6%89%EF%9D15%C2%CDLsX%A7%04%09%1Fg8oc%81%E1%8C%8D%23%96f45%40%9A%09%C2%07%C5B%3AK%B8%408%98i%E0%F3%0D%D8%CE%81%14%E4'%26%A9%92.%8B%3C%ABER%2F%E5dE%B2%0C%F6%F0%1Fs%83%F2_%B0%A8%94%E9%9B%AD%E7%10%8Dm%9A%19N%D1%7C%8A%DE%1F9%7Dp%8C%E6%00%D5%C1%3F_%18%BDA%B8%9DpX6%E3%A35~B%CD%24%AE%11%26%BD%E7%EEti%98%EDe%9A%97Y)%12%25%1C%24%BCbT%AE3li%E6%0B%03%89%9A%E6%D3%ED%F4P%92%B0%9F4%BF43Y%F3%E3%EDP%95%04%EB1%C5%F5%F6KF%F4%BA%BD%D7%DB%91%93%07%E35%3E%A7)%D6%7F%40%FE%BD%F7%F5r%8A%E5y%92%F0%EB%B4%1E%8D%D5%F4%5B%92%3AV%DB%DB%E4%CD%A6%23%C3%C4wQ%3F%03HB%82%8E%1Cd(%E0%91B%0Ca%9Ac%C4%AA%F8L%16%19%22J%A4%D2itTy%B28%D6%3B(%93%96%ED%1CGx%C9_%0E%B8%5E%16%F5%5B%B2%B8%F6%E0%FB%9E%DD%25%D7%8E%BC%15%85%C5%B7%A3%D8Q%ED%B5%81%E9%BA%B2%13%9A%1B%7Fua%A5%A3n%E17%B9%E5%9B%1Bm%AB%0B%08Q%FE%8A%E5%B1H%5Ee%CAO%82Q%D7u6%E6%90S%97%FCu%0B%CF2%94%EE%25v%12X%0C%BA%AC%F0%5E%F8*l%0AO%85%17%C2%97%BF%D4%C8%CE%DE%AD%11%CB%80q%2C%3E%AB%9ES%CD%C6%EC%25%D2L%D2%EBd%B8%BF%8A%F5B%C6%18%F9%901CZ%9D%BE%24M%9C%8A9%F2%DAP%0B'%06w%82%EB%E6%E2%5C%2F%D7%07%9E%BB%CC%5D%E1%FA%B9%08%AD.r%23%8E%C2%17%F5E%7C!%F0%BE3%BE%3E_%B7o%88a%A7%DB%BE%D3d%EB%A31Z%EB%BB%D3%91%BA%A2%B1z%94%8F%DB'%F6%3D%8E%AA%13%19%B2%B1%BE%B1~V%08%2B%B4%A2cjJ%B3tO%00%03%25mN%97%F3%05%93%EF%11%84%0B%7C%88%AE-%89%8F%ABbW%90O%2B%0Ao%99%0C%5E%97%0CI%AFH%D9.%B0%3B%8F%ED%03%B6S%D6%5D%E6i_s9%F3*p%E9%1B%FD%C3%EB.7U%06%5E%19%C0%D1s.%17%A03u%E4%09%B0%7C%5E%2C%EB%15%DB%1F%3C%9E%B7%80%91%3B%DBc%AD%3Dma%BA%8B%3EV%AB%DBt.%5B%1E%01%BB%0F%AB%D5%9F%CF%AA%D5%DD%E7%E4%7F%0Bx%A3%FC%06%A9%23%0A%D6%C2%A1_2%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%9A%9C%18%00%00%003IDAT8%11c%FC%FF%FF%7F%3E%03%1A%60%01%F2%3F%A3%891%80%04%FFQ%26%F8w%C0%B43%A1%DB%0C%E2%8F%0A%A2%85%CAh%80%8C%06%08%3C%04%E8%96%18%00%A3S%0D%CD%CF%D8%C1%9D%00%00%00%00IEND%AEB%60%82");background-repeat: no-repeat, repeat-x;background-position: center center, top left;}.ace_editor.ace_dragging .ace_content {cursor: move;}.ace_gutter-tooltip {background-color: #FFFFD5;border: 1px solid gray;box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);color: black;display: inline-block;padding: 4px;position: absolute;z-index: 300;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;cursor: default;white-space: pre-line;word-wrap: break-word;}.ace_folding-enabled > .ace_gutter-cell {padding-right: 13px;}.ace_fold-widget {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;margin: 0 -12px 0 1px;display: inline-block;width: 11px;vertical-align: top;background-image: url("data:image/png,%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%05%00%00%00%05%08%06%00%00%00%8Do%26%E5%00%00%004IDATx%DAe%8A%B1%0D%000%0C%C2%F2%2CK%96%BC%D0%8F9%81%88H%E9%D0%0E%96%C0%10%92%3E%02%80%5E%82%E4%A9*-%EEsw%C8%CC%11%EE%96w%D8%DC%E9*Eh%0C%151(%00%00%00%00IEND%AEB%60%82");background-repeat: no-repeat;background-position: center;border-radius: 3px;border: 1px solid transparent;}.ace_fold-widget.ace_end {background-image: url("data:image/png,%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%05%00%00%00%05%08%06%00%00%00%8Do%26%E5%00%00%004IDATx%DAm%C7%C1%09%000%08C%D1%8C%ECE%C8E(%8E%EC%02)%1EZJ%F1%C1'%04%07I%E1%E5%EE%CAL%F5%A2%99%99%22%E2%D6%1FU%B5%FE0%D9x%A7%26Wz5%0E%D5%00%00%00%00IEND%AEB%60%82");}.ace_fold-widget.ace_closed {background-image: url("data:image/png,%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%03%00%00%00%06%08%06%00%00%00%06%E5%24%0C%00%00%009IDATx%DA5%CA%C1%09%000%08%03%C0%AC*(%3E%04%C1%0D%BA%B1%23%A4Uh%E0%20%81%C0%CC%F8%82%81%AA%A2%AArGfr%88%08%11%11%1C%DD%7D%E0%EE%5B%F6%F6%CB%B8%05Q%2F%E9tai%D9%00%00%00%00IEND%AEB%60%82");}.ace_fold-widget:hover {border: 1px solid rgba(0, 0, 0, 0.3);background-color: rgba(255, 255, 255, 0.2);-moz-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);-webkit-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);}.ace_fold-widget:active {border: 1px solid rgba(0, 0, 0, 0.4);background-color: rgba(0, 0, 0, 0.05);-moz-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);-webkit-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);}/*** Dark version for fold widgets*/.ace_dark .ace_fold-widget {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHklEQVQIW2P4//8/AzoGEQ7oGCaLLAhWiSwB146BAQCSTPYocqT0AAAAAElFTkSuQmCC");}.ace_dark .ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH0lEQVQIW2P4//8/AxQ7wNjIAjDMgC4AxjCVKBirIAAF0kz2rlhxpAAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAFCAYAAACAcVaiAAAAHElEQVQIW2P4//+/AxAzgDADlOOAznHAKgPWAwARji8UIDTfQQAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget:hover {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);background-color: rgba(255, 255, 255, 0.1);}.ace_dark .ace_fold-widget:active {-moz-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);-webkit-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);}.ace_fold-widget.ace_invalid {background-color: #FFB4B4;border-color: #DE5555;}.ace_fade-fold-widgets .ace_fold-widget {-moz-transition: opacity 0.4s ease 0.05s;-webkit-transition: opacity 0.4s ease 0.05s;-o-transition: opacity 0.4s ease 0.05s;-ms-transition: opacity 0.4s ease 0.05s;transition: opacity 0.4s ease 0.05s;opacity: 0;}.ace_fade-fold-widgets:hover .ace_fold-widget {-moz-transition: opacity 0.05s ease 0.05s;-webkit-transition: opacity 0.05s ease 0.05s;-o-transition: opacity 0.05s ease 0.05s;-ms-transition: opacity 0.05s ease 0.05s;transition: opacity 0.05s ease 0.05s;opacity:1;}.ace_underline {text-decoration: underline;}.ace_bold {font-weight: bold;}.ace_nobold .ace_bold {font-weight: normal;}.ace_italic {font-style: italic;}</style>
+  
+  
+    
+    <title>
+  Debuggex: Online visual regex tester. JavaScript, Python, and PCRE.
+</title>
+
+    
+  <meta name="description" content="Test your regex by visualizing it with a live editor. JavaScript, Python, and PCRE.">
+
+    <meta name="keywords" content="javascript,regex,regular expression,visual,nfa,dfa,state,debugger,helper,tester,match,random match">
+    <meta name="author" content="Sergiu Toarca">
+
+    <link href="https://www.debuggex.com/static/img/favicon.ico" rel="shortcut icon">
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-38496676-1']);
+      _gaq.push(['_trackPageview']);
+
+      var _track = function(action) {
+        _gaq.push(['_trackEvent', 'Engagement', action]);
+      };
+
+      (function() {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+
+        ga.src = ('https:' == document.location.protocol ?
+            'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  
+
+
+  <script type="text/javascript" src="https://login.persona.org/include.js"></script>
+  <script type="text/javascript">$(function() {
+    $('#signin').click(function() { navigator.id.request({}); return false;});
+
+    $('#signout').click(function() { navigator.id.logout(); return false;});
+
+    var currentUser = null;
+
+    navigator.id.watch({
+        loggedInUser: currentUser,
+        onlogin: function(assertion) {
+	    $.ajax({
+		type: 'POST',
+		url: '/login',
+		data: {
+		    assertion: assertion,
+		    came_from: 'https://www.debuggex.com/',
+		    csrf_token: 'a3975335b66e0ca266c59df4762a80921878dd50'
+		},
+		dataType: 'json',
+		success: function(res, status, xhr) {
+		    if(!res['success'])
+			navigator.id.logout();
+		    window.location = res['redirect'];
+		},
+		error: function(xhr, status, err) {
+		    navigator.id.logout();
+		    alert("Login failure: " + err);
+		}
+            });
+	},
+	onlogout: function() {
+	    $.ajax({
+		type: 'POST',
+		url: '/logout',
+		data:{
+		    came_from: 'https://www.debuggex.com/',
+		    csrf_token: 'a3975335b66e0ca266c59df4762a80921878dd50'
+		},
+		dataType: 'json',
+		success: function(res, status, xhr) { window.location = res['redirect']; },
+		error: function(xhr, status, err) { alert("Logout failure: " + err); }
+	    });
+        }
+    });
+});
+</script>
+
+
+
+  <script type="text/javascript">pyramid_globals = {"tier": "", "email": ""};</script>
+
+
+<style id="ace-tm">.ace-tm .ace_gutter {background: #f0f0f0;color: #333;}.ace-tm .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-tm .ace_fold {background-color: #6B72E6;}.ace-tm .ace_scroller {background-color: #FFFFFF;}.ace-tm .ace_cursor {border-left: 2px solid black;}.ace-tm .ace_overwrite-cursors .ace_cursor {border-left: 0px;border-bottom: 1px solid black;}.ace-tm .ace_invisible {color: rgb(191, 191, 191);}.ace-tm .ace_storage,.ace-tm .ace_keyword {color: blue;}.ace-tm .ace_constant {color: rgb(197, 6, 11);}.ace-tm .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-tm .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-tm .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-tm .ace_invalid {background-color: rgba(255, 0, 0, 0.1);color: red;}.ace-tm .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-tm .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-tm .ace_support.ace_type,.ace-tm .ace_support.ace_class {color: rgb(109, 121, 222);}.ace-tm .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-tm .ace_string {color: rgb(3, 106, 7);}.ace-tm .ace_comment {color: rgb(76, 136, 107);}.ace-tm .ace_comment.ace_doc {color: rgb(0, 102, 255);}.ace-tm .ace_comment.ace_doc.ace_tag {color: rgb(128, 159, 191);}.ace-tm .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-tm .ace_variable {color: rgb(49, 132, 149);}.ace-tm .ace_xml-pe {color: rgb(104, 104, 91);}.ace-tm .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-tm .ace_markup.ace_heading {color: rgb(12, 7, 255);}.ace-tm .ace_markup.ace_list {color:rgb(185, 6, 144);}.ace-tm .ace_meta.ace_tag {color:rgb(0, 22, 142);}.ace-tm .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-tm .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-tm.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px white;border-radius: 2px;}.ace-tm .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-tm .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-tm .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-tm .ace_marker-layer .ace_active-line {background-color: transparent;}.ace-tm .ace_gutter-active-line {background-color : #dcdcdc;}.ace-tm .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-tm .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}</style></head>
+<body>
+  <div id="page">
+    <div id="content">
+      <div class="navbar navbar-static-top navbar-default dbx-navbar" role="navigation">
+        <div class="width-restricted">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="https://www.debuggex.com/"><img src="./Debuggex_files/logo.png" alt="Debuggex Beta"></a>
+          </div>
+          <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              
+  <li><a onclick="_track(&#39;Pricing&#39;);" href="https://www.debuggex.com/pricing">Pricing</a></li>
+  <li><a onclick="_track(&#39;Blog&#39;);" href="https://www.debuggex.com/blog/">Blog</a></li>
+  <li><a target="_blank" onclick="_track(&#39;Tutorial&#39;);" href="http://www.youtube.com/watch?v=xyp7ASl5ss4">Tutorial</a></li>
+    <li><a id="signin" onclick="_track(&#39;Top nav login&#39;);" href="https://www.debuggex.com/login">Login/Signup</a></li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div ng-controller="GlobalsCtrl" class="ng-scope">
+        
+<div ng-controller="UiDirectorCtrl" ng-init="referenceModel.show=false" class="ng-scope">
+    <div ng-controller="LightRegexMetaCtrl" class="ng-scope">
+    <div ng-controller="LightRegexCtrl" class="ng-scope">
+    <div ng-controller="LightNFACtrl" class="ng-scope">
+    <div ng-controller="LightTestStringCtrl" class="ng-scope">
+    <div ng-controller="UnitTestCtrl" class="ng-scope">
+    <div ng-controller="RegexApiCtrl" class="ng-scope">
+    <div ng-controller="GenCtrl" class="ng-scope">
+      <div ng-controller="RegexInitCtrl" class="ng-scope">
+      <div ng-controller="RegexInitGETCtrl" class="ng-scope">
+      <div ng-controller="RegexInitGlobalCtrl" class="ng-scope">
+      <div ng-controller="RegexInitHistoryCtrl" class="ng-scope">
+      </div>
+      </div>
+      </div>
+      </div>
+      
+          
+            <div class="navbar navbar-static-top navbar-default dbx-subnavbar" role="navigation">
+              <div class="width-restricted">
+                <div class="sidepadded">
+                  <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                      
+  <li><a href="https://www.debuggex.com/" onclick="_track(&#39;Share&#39;)" ng-click="shareRegex()"><i class="icon-share-sign subnav-icon" style="padding-right: 5px"></i>Share</a></li>
+  <li><a href="https://www.debuggex.com/" onclick="_track(&#39;Generate Snippet&#39;)" data-toggle="modal" data-target="#dbx-gen" ng-click="genSnippet()"><i class="icon-code subnav-icon"></i>Code Snippet</a></li>
+
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+          <div class="width-restricted">
+            <div class="sidepadded">
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="alert alert-success">
+  Using regexes for extracting data from web pages? Check out
+  <a href="https://www.parsehub.com/" class="alert-link" style="text-decoration:underline;">ParseHub</a>,
+  a visual web scraping tool built by the team behind Debuggex.
+</div>
+
+<div ng-controller="HiliteRegexCtrl" class="ng-scope">
+<div ng-controller="MarkerRegexCtrl" ng-init="reTrigger()" class="ng-scope">
+  <div class="main-outline">
+    <div>
+      <div class="meta-regex debug-section-header">
+        <span ng-hide="editing" title="Click to edit" ng-click="editing=true" style="cursor:pointer;">
+          <span class="title ng-binding">Untitled Regex</span>
+          <span class="description ng-binding" title="No description">
+            No description
+          </span>
+        </span>
+        <span ng-show="editing" style="position:relative;top:-5px;" class="ng-hide">
+          <span class="title">
+            <input type="text" ng-model="reMetaModel.title" class="ng-pristine ng-valid">
+          </span>
+          <span class="description">
+            <input type="text" ng-model="reMetaModel.description" class="ng-pristine ng-valid">
+          </span>
+          <span class="confirm">
+            <button ng-click="editing=false">Done Editing</button>
+          </span>
+        </span>
+        <span class="extra">
+          <!-- ngIf: apiModel.loadingEmbed -->
+          <a href="https://www.debuggex.com/" ng-click="embed()" onclick="_track(&#39;embed&#39;);">Embed on StackOverflow</a>
+        </span>
+      </div>
+    </div>
+    <div class="nfadiagram nfamarkerdiagram" style="min-height:200px" ng-hide="isTextMode" title="Regular expression visualization" dbx-nfa="nfaModel.val" dbx-dir="dbxDirModel" dbx-markers="mReModel">
+    <div class="nfa"><svg class="nfasfg" width="308.9375" height="31.5" style="margin: 84.25px 0px; zoom: 1;"><g transform="translate(41, 15.5)" style="display: inline;"><g><g><g><rect x="0" y="-10.5" rx="2" ry="2" width="238.9375" height="21.5" class="nfa-literal"></rect><text transform="translate(4, 4)" class="nfa-literal-text"><tspan dx="0" style="letter-spacing: 0px;">M</tspan><tspan dx="4" style="letter-spacing: 0px;">y</tspan><tspan class="nfa-unfocused" dx="4" style="letter-spacing: 0px;">_</tspan><tspan dx="4" style="letter-spacing: 0px;">r</tspan><tspan dx="4" style="letter-spacing: 0px;">e</tspan><tspan dx="4" style="letter-spacing: 0px;">g</tspan><tspan dx="4" style="letter-spacing: 0px;">u</tspan><tspan dx="4" style="letter-spacing: 0px;">l</tspan><tspan dx="4" style="letter-spacing: 0px;">a</tspan><tspan dx="4" style="letter-spacing: 0px;">r</tspan><tspan class="nfa-unfocused" dx="4" style="letter-spacing: 0px;">_</tspan><tspan dx="4" style="letter-spacing: 0px;">e</tspan><tspan dx="4" style="letter-spacing: 0px;">x</tspan><tspan dx="4" style="letter-spacing: 0px;">p</tspan><tspan dx="4" style="letter-spacing: 0px;">r</tspan><tspan dx="4" style="letter-spacing: 0px;">e</tspan><tspan dx="4" style="letter-spacing: 0px;">s</tspan><tspan dx="4" style="letter-spacing: 0px;">s</tspan><tspan dx="4" style="letter-spacing: 0px;">i</tspan><tspan dx="4" style="letter-spacing: 0px;">o</tspan><tspan dx="4" style="letter-spacing: 0px;">n</tspan></text><path class="nfa-path" d="M-4,0.25H0"></path><path class="nfa-path" d="M242.9375,0.25H238.9375"></path><rect class="nfa-marker sa-blue" x="4" y="-10.5" width="2" height="21.5"></rect></g></g><path class="nfa-path" d="M-8,0.25H-4"></path><path class="nfa-path" d="M246.9375,0.25H242.9375"></path><circle class="nfa-start" cx="-16" cy="0.25" r="8"></circle><circle class="nfa-end" cx="254.9375" cy="0.25" r="8"></circle><path class="nfa-path" d="M-24,0.25L-36,0.25M-24,0.25L-28.8,-2.95M-24,0.25L-28.8,3.45"></path></g></g><g class="backref-container"></g></svg></div></div>
+    <div class="nfatextdiagram nfatext ng-hide" style="min-height:207px" ng-show="isTextMode" title="Regular expression textualization" dbx-nfa="nfaModel.val">
+    </div>
+    <div>
+      <div style="margin-bottom:8px;position:relative;z-index:1;" class="clearfix">
+        <div class="lfloat">
+          <select class="flavorselect" style="display: none;"><option value="javascript">JavaScript</option><option value="python">Python</option><option value="pcre">PCRE</option></select><button type="button" class="ui-multiselect ui-widget ui-state-default ui-corner-all" aria-haspopup="true" style="width: 183px;"><span class="icon-caret-down"></span><span>JavaScript</span></button>
+          <a href="https://www.debuggex.com/#cheatsheet" style="margin-left:5px" ng-click="referenceModel.show=true">View Cheatsheet</a>
+          <span style="display:none"><div class="mode-button mode-button-true" onclick="_track(&#39;VisualMode&#39;)" ng-click="isTextMode=false">Visual Mode</div><div class="mode-button mode-button-" onclick="_track(&#39;TextMode&#39;)" ng-click="isTextMode=true">Text Mode</div></span>
+        </div>
+        <div class="rfloat">
+          <select class="flagselect" multiple="multiple" style="display: none;"><option value="i">Ignore case (i)</option><option value="m">^ and $ match lines (m)</option></select><button type="button" class="ui-multiselect ui-widget ui-state-default ui-corner-all" aria-haspopup="true" style="width: 183px;"><span class="icon-caret-down"></span><span>Flags</span></button>
+        </div>
+      </div>
+      <div class="sa-message clearfix;">
+        <span class="center-align error">
+          <span ng-show="nfaModel.error.msg" class="ng-binding ng-hide"></span>
+          <span ng-hide="nfaModel.error.msg">&nbsp;</span>
+        </span>
+      </div>
+      <div class="modelarea markerarea" ng-init="mReModel.cls=dbxDirModel.reColor" title="Regular Expression editor" min-lines="4" dbx-model-val="reModel.val" dbx-model-pos="mReModel.pos" dbx-model-init="reModel.init" dbx-dir="dbxDirModel" dbx-trigger-func="reTrigger()" dbx-hilites="hReModel.hilites" dbx-markers="mReModel" dbx-placeholder="My regular expression" show-gutter="true">
+      <div class="ace_editor ace-tm editor" style="position: relative; height: 64px;"><textarea class="ace_text-input" wrap="off" autocapitalize="off" spellcheck="false" style="top: -1px; height: 16px; width: 7.20312px; left: 44.2031px;"></textarea><div class="ace_gutter"><div class="ace_gutter-active-line" style="top: 0px; height: 16px;"></div><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="margin-top: 0px; height: 94px; width: 41px;"><div class="ace_gutter-cell " style="height:16px;">1</div></div></div><div class="ace_scroller" style="height: 62px; left: 41px; right: 0px;"><div class="ace_content" style="margin-top: 0px; width: 612px; height: 94px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580.25px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"><div class="marker sa-blue ace_start" style="height:16px;width:7.203125px;top:0px;left:4px;"></div></div><div class="ace_layer ace_text-layer" style="padding: 0px 4px;"><div class="ace_line_group"><div class="ace_line" style="height:16px">My&nbsp;regular&nbsp;expression</div></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer ace_hidden-cursors"><div class="ace_cursor" style="left: 4px; top: 0px; width: 7.20312px; height: 16px;"></div></div></div></div><div style="height: auto; width: auto; top: -100px; left: -100px; visibility: hidden; position: fixed; overflow: visible; white-space: nowrap;">X</div><div class="ace_scrollbar" style="width: 20px; height: 62px;"><div class="ace_scrollbar-inner" style="height: 16px;"></div></div></div></div>
+    </div>
+    <div ng-controller="HiliteTestStringCtrl" style="margin-top:30px; padding-bottom: 20px;" class="ng-scope">
+    <div ng-controller="StateInfoTestStringCtrl" class="ng-scope">
+    <div ng-controller="MarkerTestStringCtrl" class="ng-scope">
+      <div>
+      <div class="sa-message clearfix">
+        <span class="left-align">
+          <strong>Result:</strong>
+          <span ng-show="hTestStringModel.positions[testStringModel.startAt]" class="ng-hide">
+            <span class="antierror">Matches</span>
+          </span>
+          <span ng-hide="hTestStringModel.positions[testStringModel.startAt]" class="">
+            <span class="error">Does not match</span>
+          </span>
+          starting at the black triangle slider
+        </span>
+      </div>
+      </div>
+      <div class="slidearea" ng-init="mTestStringModel.cls=dbxDirModel.colors[0]" title="Test String Editor" min-lines="4" dbx-model-val="testStringModel.val" dbx-model-pos="mTestStringModel.pos" dbx-model-init="testStringModel.init" dbx-model-start-at="testStringModel.startAt" dbx-dir="dbxDirModel" dbx-trigger-func="testStrTrigger()" dbx-hilites="hTestStringModel.hilites" dbx-markers="mTestStringModel" dbx-placeholder="My test data" show-gutter="true">
+      <div class="ng-scope sa-pink"><div class="modelarea markerarea" min-lines="4" dbx-model-pos="mTestStringModel.pos" dbx-start-at="testStringModel.startAt" dbx-model-init="testStringModel.init" dbx-model-val="testStringModel.val" dbx-dir="dbxDirModel" dbx-trigger-func="testStrTrigger()" dbx-hilites="hTestStringModel.hilites" dbx-markers="mTestStringModel" dbx-placeholder="My test data" show-gutter="true"><div class="ace_editor ace-tm editor" style="position: relative; height: 64px;"><textarea class="ace_text-input" wrap="off" autocapitalize="off" spellcheck="false" style="top: -1px; height: 16px; width: 7.20312px; left: 44.2031px;"></textarea><div class="ace_gutter"><div class="ace_gutter-active-line" style="top: 0px; height: 16px;"></div><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="margin-top: 0px; height: 94px; width: 41px;"><div class="ace_gutter-cell " style="height:16px;">1</div></div></div><div class="ace_scroller ace_scroll-left" style="height: 62px; left: 41px; right: 0px;"><div class="ace_content" style="margin-top: 0px; width: 612px; height: 94px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 580.25px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"><div class="w-marker ace_start" style="height:16px;width:7.203125px;top:0px;left:25.609375px;"></div><div class="secondary_marker sa-pink ace_start" style="height:16px;width:7.203125px;top:0px;left:4px;"></div></div><div class="ace_layer ace_text-layer" style="padding: 0px 4px;"><div class="ace_line_group"><div class="ace_line" style="height:16px">My&nbsp;test&nbsp;data</div></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer ace_hidden-cursors"><div class="ace_cursor" style="left: 4px; top: 0px; width: 7.20312px; height: 16px;"></div></div></div></div><div style="height: auto; width: auto; top: -100px; left: -100px; visibility: hidden; position: fixed; overflow: visible; white-space: nowrap;">X</div><div class="ace_scrollbar" style="width: 20px; height: 62px;"><div class="ace_scrollbar-inner" style="height: 16px;"></div></div></div></div><div class="powerslider" dbx-model-pos="mTestStringModel.pos" dbx-model-start-at="testStringModel.startAt" dbx-val="testStringModel.val" dbx-dir="dbxDirModel" dbx-trigger-func="testStrTrigger()" dbx-markers="mTestStringModel"><div class="slider ps-slider faded"><div class="ps-span ds-slider" style="left: 0%; width: 100%;"></div><div class="ps-span ds-slider" style="left: 0%; width: 0%;"></div><div class="ps-handle starthandle" title="Start At" style="left: 0%;"></div><div class="ps-handle" title="Step" style="left: 0%;"></div></div></div></div></div>
+    </div>
+    </div>
+    </div>
+  </div>
+  <div class="debug-section-header emphasized-header unit-tests-header">
+  <i class="icon-caret-down icons downShift" ng-hide="hideTests" ng-click="hideTests=true"></i>
+  <i class="icon-caret-right icons downShift ng-hide" ng-show="hideTests" ng-click="hideTests=false"></i>
+  <span class="title downShift">
+    Unit Tests
+  </span>
+  <span class="lightText" style="vertical-align: -1px">(<a class="clickable ng-hide" ng-show="hideTests" ng-click="hideTests=false">show</a><a class="clickable" ng-hide="hideTests" ng-click="hideTests=true">hide</a>)</span>
+  <a href="https://www.debuggex.com/blog/2013/a-true-regex-tester/" style="vertical-align: -2px;">Help</a>
+  <span class="add-test">
+    <button class="unit-test-button blue ng-hide" ng-show="pyramid_globals.email" href="" ng-click="addTest(); hideTests=false" onclick="_track(&#39;Add unit test&#39;)">
+      <i class="icon-plus-sign"></i> Add new unit test
+    </button>
+    <button class="unit-test-button blue" ng-hide="pyramid_globals.email" href="" onclick="_track(&#39;Unittest account&#39;);$(&#39;#signin&#39;).click();">
+      Login to add unit tests
+    </button>
+  </span>
+  <span class="extra">
+    <span ng-show="unitTestModel.tests.length==0" class="notests">
+      You haven't added any unit tests yet
+    </span>
+    <span ng-hide="unitTestModel.tests.length==0" class="ng-binding ng-hide">
+      0 Total Tests:
+      <span class="passing ng-binding">
+        Passing (0);
+      </span>
+      <span ng-hide="unitTestModel.failing.length==0" class="failing ng-binding ng-hide">
+        Failing (0)
+      </span>
+    </span>
+  </span>
+</div>
+
+<div style="margin-top:5px" ng-hide="hideTests">
+  <div ng-hide="editedTestIndex==-1||unitTestModel.tests.length" class="centered-text">
+    No unit tests added.
+  </div>
+  <table class="unit-tests">
+    <tbody><tr ng-show="editedTestIndex==-1||unitTestModel.tests.length&gt;0" class="ng-hide">
+      <th style="width:50%">Expected Matches (hover over highlights for details)</th>
+      <th style="width:50%">Actual Matches</th>
+      <th class="smallcell">&nbsp;Edit&nbsp;</th>
+      <th class="smallcell">&nbsp;Passing&nbsp;</th>
+    </tr>
+    </tbody><tbody class="unit-tests-body">
+      <!-- ngRepeat: test in unitTestModel.tests -->
+      <!-- ngIf: editedTestIndex==-1 -->
+    </tbody>
+  </table>
+</div>
+
+  <div ng-controller="LibraryCtrl" class="ng-scope">
+  <div class="debug-section-header emphasized-header">
+    <i class="icon-caret-down icons" ng-hide="hideLibrary" ng-click="hideLibrary=true"></i>
+    <i class="icon-caret-right icons ng-hide" ng-show="hideLibrary" ng-click="hideLibrary=false"></i>
+    <span class="title">
+      Library
+    </span>
+    <span class="lightText" style="vertical-align: 2px">(<a class="clickable ng-hide" ng-show="hideLibrary" ng-click="hideLibrary=false">show</a><a class="clickable" ng-hide="hideLibrary" ng-click="hideLibrary=true">hide</a>)</span>
+    <a href="https://www.debuggex.com/blog/2013/a-composable-regex-repository/" style="vertical-align: 1px">Help</a>
+    <span class="extra">
+      <input type="text" placeholder="search" ng-model="libraryModel.filter" style="font-size:12px;padding-left:2px" class="ng-pristine ng-valid">
+    </span>
+  </div>
+  <div class="library" ng-hide="hideLibrary">
+    <div class="lpanel">
+      <div class="content">
+        <!-- ngRepeat: dep in (libraryModel.val | filter:libraryModel.filter) --><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This regex matches a double-quoted string. It will correctly match any escaped quotes." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Quoted String</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This regex matches a natural number." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Natural Number</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This regex matches a C-style variable name. It can contain letters, digits or underscores. It must begin with a letter or underscores." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">C-Style Variable Name</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This regex matches a whole number, which is either 0 or a natural number." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Whole Number</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This regex matches an integer." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Integer</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This regex matches a valid social security number. The hyphens are optional." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">SSN</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This regex matches an ISBN-13. It does not verify the checksum." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">ISBN-13</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This regex matches an ISBN-10. It does not verify the checksum." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">ISBN-10</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This regex matches a single hexadecimal digit." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Hex Digit</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This regex matches up to 4 hex digits in a row." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Block of up to 4 Hex Digits</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This regex matches a number between 0 and 255, inclusive." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Number up to 255</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This regex matches a real number." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Real Number</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This regex matches a (possibly negative) dollar value." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Dollar value</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This regex matches a valid Visa credit card number." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Visa Credit Card</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This regex matches a valid Mastercard credit card number." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Mastercard Credit Card</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This regex matches a valid American Express credit card." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">American Express Credit Card</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This regex matches a valid credit card number." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Credit Card</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This regex matches a valid time, in either 24-hour format or 12-hour am/pm format." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Time</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This regex matches a valid English name of month. It matches short names as well as long names." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Name of month</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="No description" class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Untitled Regex</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This regex matches a valid IPv6 address." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">IPv6</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This regex matches a valid IPv4 address." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">IPv4</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This regex matches the tail of a credit card number." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Credit Card Base</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="Matches a valid date of the format YYYYMMDD, delimited by /, -, or ." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Date YYYYMMDD</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This regex matches a valid leap year between 1000 and 9999." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Leap Year</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="Matches a 4-digit year between 1000 and 9999" class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Year</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This regex fails to match any string. It is efficient." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Fail on Everything</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This regex matches a hex color of the form #YYYYYY." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Hex Color</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This matches any character, regardless of what flags are set." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Any character</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This regex matches a single lowercase letter." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Lowercase Letter</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This regex matches a single uppercase letter." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Uppercase Letter</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This regex matches a single letter." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Letter</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This regex matches a single letter or digit." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Alphanumeric Character</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This regex matches a punctuation mark according to RFC 2396." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Punctuation Mark</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This regex matches a single letter or digit." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Alphanumeric Character</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This matches a single unreserved character according to RFC 2396." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Unreserved Character</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This matches an escaped octet in a URI, as per RFC 2396." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">URI Escaped Octet</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="Matches a single ASCII digit. Ignores all flags." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Digit</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This matches a URI scheme, as per RFC 2396." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">URI Scheme</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This matches the userinfo portion of a URI, according to RFC 2396." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">URI Userinfo</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This matches a reserved URI character, according to RFC 2396." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">URI Reserved Character</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="Postal codes of the form &#39;DDDD&#39;, with the first two digits 02, 08 or 20-97. Leading 0 may be omitted. 909 and 0909 are valid as well - but no other postal codes starting with 9 or 09." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Australian Postal Code</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="Postal codes of the form: &#39;DDDD&#39;, with the first digit representing the province; the others distribution sectors. Postal codes do not start with a zero." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Belgium Postal Code</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="Postal codes of the form: &#39;DDDD&#39;, with the first digit representing the distribution region, the second digit the distribution district. Postal codes do not start with a zero. Postal codes starting with &#39;39&#39; are in Greenland." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Denmark</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="Postal codes of the form: &#39;DDDDD&#39;. All digits are used. First two digits indicate the department, and range from 01 to 98, or 00 for army." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">France Postal Code</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This matches a single unreserved character according to RFC 2396." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Unreserved Character</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="Postal codes of the form: &#39;DDDDD&#39;. All digits are used. First digit is the distribution zone, second a distribution region. Other digits indicate the distribution district and postal town." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">German Postal Code</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This matches a single URI Character, as per RFC 2396." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">URI Character</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="Postal codes of Greenland are part of the Danish system. Codes in Greenland start with 39." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Greenland Postal Code</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="First digit: region. Second digit: province. Third digit: capital/province (odd for capital). Fourth digit: route. Fifth digit: place on route (0 for small places)" class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Italian Postal Code</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="Four digits" class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Norway Postal Code</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This matches a valid character occuring in the path of a URI, according to RFC 2396." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">URI Path Character</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="Five digits, first two indicate the province. Third digit: large town, main delivery rounds. Last 2 digits: delivery area, secondary delivery route or link to rural areas." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Spain Postal Code</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="Four digits, first is district, second is area, third is route, fourth is post office number." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Switzerland Postal Code</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="The opaque part of a URI, as per RFC 2396." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">URI Opaque Part</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="Matches a URI Segment, according to RFC 2396." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">URI Segment</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This matches a URI path segment, as per RFC 2396." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">URI Path Segment</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="Postal codes of the form &#39;DDDD LL&#39;, with F, I, O, Q, U and Y not used, SA, SD and SS unused combinations, and the first digit cannot be 0. No specific meaning to the letters or digits." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Dutch/Netherlands Postal Code</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="Postal codes of the form &#39;DDDDD&#39; or &#39;DDDDD-DDDD&#39;. All digits are used, none carry any specific meaning." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">USA Postal Code</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This matches a top level domain, according to RFC 2396." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">URI Top Level Domain</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="Matches a URI Domain Label, as per RFC 2396." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">URI Domain Label</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="Matches a URI hostname, as per RFC 2396." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">URI Hostname</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="Matches a URI host, as per RFC 2396." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">URI Host</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="Matches the server portion of a URI, according to RFC 2396." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">URI Server</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="Matches an authority, as specified by RFC 2396." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">URI Authority</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This matches an absolute path, as defined by RFC 2396." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">URI Absolute Path</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="Matches a relative path, as specified by RFC 2396." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">URI Relative Path</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="Matches a net path, as defined by RFC 2396." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">URI Net Path</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="The hierarchical part of a URI, as defined by RFC 2396." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">URI Hierarchical Part</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="Matches a relative URI, as defined in RFC 2396." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Relative URI</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="Matches an absolute URI, as defined by RFC 2396." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Absolute URI</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="Matches a URI reference, as defined by RFC 2396." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">URI Reference</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="A 6 digit Canadian Postal Code." class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Canadian Postal Code</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="British Postal Code Schema" class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">British Postal Code</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="This regex matches a valid time according to %H:%M:%S" class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">Time HMS</a>
+        </div><div ng-repeat="dep in (libraryModel.val | filter:libraryModel.filter)" title="Matches a valid CSS class name" class="ng-scope">
+          <a class="title ng-binding" href="https://www.debuggex.com/" ng-click="select(dep)">CSS Class</a>
+        </div>
+      </div>
+    </div>
+    <div class="rpanel">
+      <div class="content">
+          <a href="https://www.debuggex.com/" onclick="_track(&#39;Library account&#39;);$(&#39;#signin&#39;).click();">
+            Login to view details of this regex
+          </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+<div>
+  <div ng-controller="RegexFlavorCtrl" id="cheatsheet" style="margin-top:50px;text-align:center;" class="ng-scope">
+  <a href="https://www.debuggex.com/" ng-hide="referenceModel.show" ng-click="referenceModel.show=true" class="ng-hide">
+    Show cheatsheet
+  </a>
+  <div ng-show="referenceModel.show" style="display:inline-block" class="">
+    <span style="font-weight:700" class="ng-binding">
+      JavaScript regex quick reference (<a href="https://www.debuggex.com/" ng-click="referenceModel.show=false">hide</a>):
+    </span>
+    <br>
+    <table style="display:inline-block;vertical-align:top;margin-left:10px;text-align:left">
+      <tbody>
+        <tr>
+          <td><span class="code">[abx-z]</span></td>
+          <td>One character of: a, b, or the range x-z</td>
+        </tr>
+        <tr>
+          <td><span class="code">[^abx-z]</span></td>
+          <td>One character except: a, b, or the range x-z</td>
+        </tr>
+        <tr>
+          <td><span class="code">a|b</span></td>
+          <td>a or b</td>
+        </tr>
+        <tr>
+          <td><span class="code">a?</span></td>
+          <td>Zero or one a's (greedy)</td>
+        </tr>
+        <tr>
+          <td><span class="code">a??</span></td>
+          <td>Zero or one a's (lazy)</td>
+        </tr>
+        <tr>
+          <td><span class="code">a*</span></td>
+          <td>Zero or more a's (greedy)</td>
+        </tr>
+        <tr>
+          <td><span class="code">a*?</span></td>
+          <td>Zero or more a's (lazy)</td>
+        </tr>
+        <tr>
+          <td><span class="code">a+</span></td>
+          <td>One or more a's (greedy)</td>
+        </tr>
+        <tr>
+          <td><span class="code">a+?</span></td>
+          <td>One or more a's (lazy)</td>
+        </tr>
+        <tr>
+          <td><span class="code">a{4}</span></td>
+          <td>Exactly 4 a's</td>
+        </tr>
+        <tr>
+          <td><span class="code">a{4,8}</span></td>
+          <td>Between (inclusive) 4 and 8 a's</td>
+        </tr>
+        <tr>
+          <td><span class="code">a{9,}</span></td>
+          <td>9 or more a's</td>
+        </tr>
+        <tr ng-show="reModel.flavor==&#39;pcre&#39;" class="ng-hide">
+          <td><span class="code">(?&gt;...)</span></td>
+          <td>An atomic group</td>
+        </tr>
+        <tr>
+          <td><span class="code">(?=...)</span></td>
+          <td>A positive lookahead</td>
+        </tr>
+        <tr>
+          <td><span class="code">(?!...)</span></td>
+          <td>A negative lookahead</td>
+        </tr>
+        <tr ng-show="reModel.flavor==&#39;pcre&#39; || reModel.flavor==&#39;python&#39;" class="ng-hide">
+          <td><span class="code">(?&lt;=...)</span></td>
+          <td>A positive lookbehind</td>
+        </tr>
+        <tr ng-show="reModel.flavor==&#39;pcre&#39; || reModel.flavor==&#39;python&#39;" class="ng-hide">
+          <td><span class="code">(?&lt;!...)</span></td>
+          <td>A negative lookbehind</td>
+        </tr>
+        <tr>
+          <td><span class="code">(?:...)</span></td>
+          <td>A non-capturing group</td>
+        </tr>
+        <tr>
+          <td><span class="code">(...)</span></td>
+          <td>A capturing group</td>
+        </tr>
+        <tr ng-show="reModel.flavor==&#39;pcre&#39; || reModel.flavor==&#39;python&#39;" class="ng-hide">
+          <td><span class="code">(?P&lt;n&gt;...)</span></td>
+          <td>A capturing group named n</td>
+        </tr>
+      </tbody>
+    </table>
+    <table style="display:inline-block;vertical-align:top;margin-left:10px;text-align:left;">
+      <tbody>
+        <tr>
+          <td><span class="code code-escaped">^</span></td>
+          <td>Beginning of the string</td>
+        </tr>
+        <tr>
+          <td><span class="code code-escaped">$</span></td>
+          <td>End of the string</td>
+        </tr>
+        <tr>
+          <td><span class="code code-escaped">\d</span></td>
+          <td>A digit (same as <span class="code">[0-9]</span>)</td>
+        </tr>
+        <tr>
+          <td><span class="code code-escaped">\D</span></td>
+          <td>A non-digit (same as <span class="code">[^0-9]</span>)</td>
+        </tr>
+        <tr>
+          <td><span class="code code-escaped">\w</span></td>
+          <td>A word character (same as <span class="code">[_a-zA-Z0-9]</span>)</td>
+        </tr>
+        <tr>
+          <td><span class="code code-escaped">\W</span></td>
+          <td>
+            A non-word character (same as <span class="code">[^_a-zA-Z0-9]</span>)
+          </td>
+        </tr>
+        <tr>
+          <td><span class="code code-escaped">\s</span></td>
+          <td>A whitespace character</td>
+        </tr>
+        <tr>
+          <td><span class="code code-escaped">\S</span></td>
+          <td>A non-whitespace character</td>
+        </tr>
+        <tr>
+          <td><span class="code code-escaped">\b</span></td>
+          <td>A word boundary</td>
+        </tr>
+        <tr>
+          <td><span class="code code-escaped">\B</span></td>
+          <td>A non-word boundary</td>
+        </tr>
+        <tr>
+          <td><span class="code code-escaped">\n</span></td>
+          <td>A newline</td>
+        </tr>
+        <tr>
+          <td><span class="code code-escaped">\t</span></td>
+          <td>A tab</td>
+        </tr>
+        <tr>
+          <td><span class="code code-escaped">\cY</span></td>
+          <td>The control character with the hex code Y</td>
+        </tr>
+        <tr>
+          <td><span class="code code-escaped">\xYY</span></td>
+          <td>The character with the hex code YY</td>
+        </tr>
+        <tr>
+          <td><span class="code code-escaped">\uYYYY</span></td>
+          <td>The character with the hex code YYYY</td>
+        </tr>
+        <tr>
+          <td><span class="code code-escaped">.</span></td>
+          <td>Any character</td>
+        </tr>
+        <tr>
+          <td><span class="code code-escaped">\Y</span></td>
+          <td>The Y'th captured group</td>
+        </tr>
+        <tr ng-show="reModel.flavor==&#39;pcre&#39;" class="ng-hide">
+          <td><span class="code">(?1)</span></td>
+          <td>Recurse into numbered group 1</td>
+        </tr>
+        <tr ng-show="reModel.flavor==&#39;pcre&#39;" class="ng-hide">
+          <td><span class="code">(?&amp;x)</span></td>
+          <td>Recurse into named group x</td>
+        </tr>
+        <tr ng-show="reModel.flavor==&#39;pcre&#39; || reModel.flavor==&#39;python&#39;" class="ng-hide">
+          <td><span class="code">(?P=n)</span></td>
+          <td>The captured group named 'n'</td>
+        </tr>
+        <tr ng-show="reModel.flavor==&#39;pcre&#39; || reModel.flavor==&#39;python&#39;" class="ng-hide">
+          <td><span class="code">(?#...)</span></td>
+          <td>A comment</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <a href="https://www.debuggex.com/cheatsheet/regex/javascript" target="_blank" class="ng-binding">
+      Full JavaScript regex cheatsheet
+    </a>
+  </div>
+</div>
+
+</div>
+
+<div id="dbx-share-regex" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Sharing Expression</h4>
+      </div>
+      <div class="modal-body">
+        Share this link to get back to exactly this page:
+        <div style="font-weight: bold" class="dbx-share-link">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="dbx-embed-so" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Embed Expression</h4>
+      </div>
+      <div class="modal-body">
+        Paste this code into a StackOverflow answer to embed an image with a link
+        to this exact page:
+        <div>
+          <textarea class="embed-code" rows="6" style="width:100%" readonly=""></textarea>
+        </div>
+        <br>
+        Preview:
+        <div style="margin:10px;padding:10px;border:1px dashed black;border-radius:4px;">
+        <div style="background:#eee;font-family:&#39;courier new&#39;;padding:4px;font-size:14px;">
+        <pre style="border:none;padding:0;margin:0;background-color:transparent;" class="regex"></pre>
+        </div>
+        <br>
+        <div class="img"></div>
+        <br>
+        <a class="link">Debuggex Demo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="dbx-gen" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Generate Code Snippet</h4>
+      </div>
+      <div class="modal-body">
+        <div ng-show="genModel.error" class="ng-hide">
+          The free tier doesn't support code snippets using expressions from
+          the library. <a href="https://www.debuggex.com/pricing" target="_blank">Upgrade my account</a>.
+        </div>
+        <div ng-hide="genModel.error">
+          Copy and paste this snippet directly into your code:
+          <br>
+          <pre class="ng-binding"></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+            </div>
+          </div>
+        
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+  </div>
+
+      </div>
+    </div>
+    <div class="footer-container">
+      <div class="footer">
+        <div class="sidepadded">
+          <div class="copyright lfloat">
+            Copyright © 2013 www.debuggex.com
+          </div>
+          <div class="links rfloat">
+            <a href="https://www.debuggex.com/blog/">Blog</a>
+            |
+            <a href="https://www.debuggex.com/libraries">Libraries</a>
+            |
+            <a href="mailto:serge@debuggex.com">Contact</a>
+            |
+            <a href="https://www.debuggex.com/privacy">Privacy</a>
+            |
+            <a href="https://www.debuggex.com/terms">Terms</a>
+            |
+            <a href="http://www.twitter.com/debuggex">Twitter</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<div class="ui-multiselect-menu ui-widget ui-widget-content ui-corner-all ui-multiselect-single" style="width: 183px;"><div class="ui-widget-header ui-corner-all ui-multiselect-header ui-helper-clearfix" style="display: none;"><ul class="ui-helper-reset"><li class="ui-multiselect-close"><a href="https://www.debuggex.com/#" class="ui-multiselect-close"><span class="ui-icon ui-icon-circle-close"></span></a></li></ul></div><ul class="ui-multiselect-checkboxes ui-helper-reset"><li class=" "><label for="ui-multiselect-3-option-0" title="" class="ui-corner-all ui-state-active"><input id="ui-multiselect-3-option-0" name="multiselect_3" type="radio" value="javascript" title="JavaScript" checked="checked" aria-selected="true"><span>JavaScript</span></label></li><li class=" "><label for="ui-multiselect-3-option-1" title="" class="ui-corner-all"><input id="ui-multiselect-3-option-1" name="multiselect_3" type="radio" value="python" title="Python"><span>Python</span></label></li><li class=" "><label for="ui-multiselect-3-option-2" title="" class="ui-corner-all"><input id="ui-multiselect-3-option-2" name="multiselect_3" type="radio" value="pcre" title="PCRE"><span>PCRE</span></label></li></ul></div><div class="ui-multiselect-menu ui-widget ui-widget-content ui-corner-all" style="width: 183px;"><div class="ui-widget-header ui-corner-all ui-multiselect-header ui-helper-clearfix" style="display: none;"><ul class="ui-helper-reset"><li class="ui-multiselect-close"><a href="https://www.debuggex.com/#" class="ui-multiselect-close"><span class="ui-icon ui-icon-circle-close"></span></a></li></ul></div><ul class="ui-multiselect-checkboxes ui-helper-reset"><li class=" "><label for="ui-multiselect-6-option-0" title="" class="ui-corner-all"><input id="ui-multiselect-6-option-0" name="multiselect_6" type="checkbox" value="i" title="Ignore case (i)"><span>Ignore case (i)</span></label></li><li class=" "><label for="ui-multiselect-6-option-1" title="" class="ui-corner-all"><input id="ui-multiselect-6-option-1" name="multiselect_6" type="checkbox" value="m" title="^ and $ match lines (m)"><span>^ and $ match lines (m)</span></label></li></ul></div></body></html>
